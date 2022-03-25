@@ -79,6 +79,33 @@ namespace JslWeb.Controllers
             return View(motorista);
         }
 
+
+        public async Task<ActionResult> Delete(long? id)
+        {
+            if (id == null) return NotFound();
+
+            var motorista = await GetMotorista(id);
+
+            if (id != motorista.Id) return NotFound();
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(API);
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                HttpResponseMessage responeMessage = await client.DeleteAsync($"motoristas/{id.ToString()}");
+
+                if (responeMessage.IsSuccessStatusCode)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    return Problem(statusCode: (int)responeMessage.StatusCode);
+                }
+            }
+        }
+
         private async Task<bool> MotoristaExists(long? id)
         {
             var motorista = await GetMotorista(id);
