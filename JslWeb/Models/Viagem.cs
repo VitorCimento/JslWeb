@@ -10,9 +10,9 @@ namespace JslWeb.Models
         [Range(0.0001, 99999.9999, ErrorMessage = "Peso deve estar ente 0,0001 e 99999,9999"),
             Required(ErrorMessage = "O Peso é obrigatório"),
             Display(Name = "Peso da Carga")]
-        public double PesoCarga { get; set; }
+        public decimal PesoCarga { get; set; }
 
-        [DataType(DataType.Date),
+        [DataType(DataType.DateTime),
             Display(Name = "Data/Hora da Viagem"),
             Required(ErrorMessage = "A Data da Viagem é obrigatória")]
         public DateTime DtHrViagem { get; set; }
@@ -30,7 +30,7 @@ namespace JslWeb.Models
         [Range(0.0001, 999999.9999, ErrorMessage = "Km Total deve estar ente 0,0001 e 999999,9999"),
             Required(ErrorMessage = "O Km Total é obrigatório"),
             Display(Name = "KM Total")]
-        public double TotalKm { get; set; }
+        public decimal TotalKm { get; set; }
 
         public Motorista? Motorista { get; set; }
         [Required(ErrorMessage = "O Motorista é obrigatório"),

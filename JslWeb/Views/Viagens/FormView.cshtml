@@ -1,0 +1,64 @@
+﻿@model JslWeb.Models.Viagem
+
+@{
+    ViewData["Title"] = ViewBag.Titulo;
+}
+
+<h1>@ViewBag.Titulo</h1>
+
+<h4>@ViewBag.Header</h4>
+<hr />
+<div class="row">
+    <div class="col-12">
+        <form asp-action="FormView">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <Input type="hidden" asp-for="Id" />
+            <div class="row">
+                <div class="form-group col-4">
+                    <label asp-for="PesoCarga" class="control-label"></label>
+                    <input asp-for="PesoCarga" class="form-control" />
+                    <span asp-validation-for="PesoCarga" class="text-danger"></span>
+                </div>
+                <div class="form-group col-4">
+                    <label asp-for="DtHrViagem" class="control-label"></label>
+                    <input asp-for="DtHrViagem" class="form-control" />
+                    <span asp-validation-for="DtHrViagem" class="text-danger"></span>
+                </div>
+                <div class="form-group col-4">
+                    <label asp-for="TotalKm" class="control-label"></label>
+                    <input asp-for="TotalKm" class="form-control" />
+                    <span asp-validation-for="TotalKm" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-6">
+                    <label asp-for="LocalEntrega" class="control-label"></label>
+                    <input asp-for="LocalEntrega" class="form-control" />
+                    <span asp-validation-for="LocalEntrega" class="text-danger"></span>
+                </div>
+                <div class="form-group col-6">
+                    <label asp-for="LocalSaida" class="control-label"></label>
+                    <input asp-for="LocalSaida" class="form-control" />
+                    <span asp-validation-for="LocalSaida" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="MotoristaId" class="control-label"></label>
+                <select asp-for="MotoristaId" class="form-control" asp-items="ViewBag.MotoristaId"></select>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="form-group col-6">
+                    <input type="submit" value="Gravar" class="btn btn-primary w-100" />
+                </div>
+                <div class="col-6">
+                    <a class="btn btn-secondary w-100" asp-action="Index">Voltar à Lista</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

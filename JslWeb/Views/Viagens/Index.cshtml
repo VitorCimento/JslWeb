@@ -1,0 +1,74 @@
+﻿@model IEnumerable<JslWeb.Models.Viagem>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Viagens</h1>
+
+<p>
+    <a asp-action="FormView" class="btn btn-success">Criar Nova</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PesoCarga)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DtHrViagem)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LocalEntrega)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LocalSaida)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalKm)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MotoristaId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PesoCarga)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DtHrViagem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LocalEntrega)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LocalSaida)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalKm)
+            </td>
+            <td>
+                @{
+                    var motorista = $"{item.MotoristaId.ToString()} - {item.Motorista.Nome} {item.Motorista.Sobrenome}";
+                    @Html.DisplayFor(modelItem => motorista)
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Alterar" , "FormView", new { id=item.Id }, new { @class="btn btn-primary"})
+                @Html.ActionLink("Detalhes", "Details" , new { id=item.Id }, new { @class="btn btn-primary"})
+                <a asp-route-id="@item.Id" asp-action="Delete" class="btn btn-danger" onclick="return confirm('Confirma a deleção deste registro?')">Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
