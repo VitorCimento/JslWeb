@@ -1,0 +1,101 @@
+﻿@model JslWeb.Models.Motorista
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Alteração:</h1>
+
+<h4>Motorista @Model.Id</h4>
+<hr />
+<div class="row">
+    <div class="col-12">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <Input type="hidden" asp-for="Id" />
+            <div class="row">
+                <div class="form-group col-6">
+                    <label asp-for="Nome" class="control-label"></label>
+                    <input asp-for="Nome" class="form-control" />
+                    <span asp-validation-for="Nome" class="text-danger"></span>
+                </div>
+                <div class="form-group col-6">
+                    <label asp-for="Sobrenome" class="control-label"></label>
+                    <input asp-for="Sobrenome" class="form-control" />
+                    <span asp-validation-for="Sobrenome" class="text-danger"></span>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="form-group col-3">
+                    <label asp-for="CaminhaoMarca" class="control-label"></label>
+                    <input asp-for="CaminhaoMarca" class="form-control" />
+                    <span asp-validation-for="CaminhaoMarca" class="text-danger"></span>
+                </div>
+                <div class="form-group col-3">
+                    <label asp-for="CaminhaoModelo" class="control-label"></label>
+                    <input asp-for="CaminhaoModelo" class="form-control" />
+                    <span asp-validation-for="CaminhaoModelo" class="text-danger"></span>
+                </div>
+                <div class="form-group col-3">
+                    <label asp-for="CaminhaoPlaca" class="control-label"></label>
+                    <input asp-for="CaminhaoPlaca" class="form-control" />
+                    <span asp-validation-for="CaminhaoPlaca" class="text-danger"></span>
+                </div>
+                <div class="form-group col-3">
+                    <label asp-for="CaminhaoEixos" class="control-label"></label>
+                    <input asp-for="CaminhaoEixos" class="form-control" />
+                    <span asp-validation-for="CaminhaoEixos" class="text-danger"></span>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="form-group col-6">
+                    <label asp-for="EndLogradouro" class="control-label"></label>
+                    <input asp-for="EndLogradouro" class="form-control" />
+                    <span asp-validation-for="EndLogradouro" class="text-danger"></span>
+                </div>
+                <div class="form-group col-2">
+                    <label asp-for="EndNumero" class="control-label"></label>
+                    <input asp-for="EndNumero" class="form-control" />
+                    <span asp-validation-for="EndNumero" class="text-danger"></span>
+                </div>
+                <div class="form-group col-4">
+                    <label asp-for="EndBairro" class="control-label"></label>
+                    <input asp-for="EndBairro" class="form-control" />
+                    <span asp-validation-for="EndBairro" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-4">
+                    <label asp-for="EndCidade" class="control-label"></label>
+                    <input asp-for="EndCidade" class="form-control" />
+                    <span asp-validation-for="EndCidade" class="text-danger"></span>
+                </div>
+                <div class="form-group col-3">
+                    <label asp-for="EndCep" class="control-label"></label>
+                    <input asp-for="EndCep" class="form-control" />
+                    <span asp-validation-for="EndCep" class="text-danger"></span>
+                </div>
+                <div class="form-group col-1">
+                    <label asp-for="EndUf" class="control-label"></label>
+                    <input asp-for="EndUf" class="form-control" />
+                    <span asp-validation-for="EndUf" class="text-danger"></span>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="form-group col-6">
+                    <input type="submit" value="Gravar" class="btn btn-primary w-100" />
+                </div>
+                <div class="col-6">
+                    <a class="btn btn-secondary w-100" asp-action="Index">Voltar à Lista</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

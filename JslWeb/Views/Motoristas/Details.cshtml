@@ -1,0 +1,100 @@
+﻿@model JslWeb.Models.Motorista
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalhes</h1>
+
+<div>
+    <h4>Motorista</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Sobrenome)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Sobrenome)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CaminhaoMarca)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CaminhaoMarca)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CaminhaoModelo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CaminhaoModelo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CaminhaoPlaca)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CaminhaoPlaca)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CaminhaoEixos)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CaminhaoEixos)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EndLogradouro)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EndLogradouro)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EndNumero)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EndNumero)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EndBairro)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EndBairro)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EndCidade)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EndCidade)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EndCep)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EndCep)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EndUf)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EndUf)
+        </dd>
+    </dl>
+</div>
+<div class="row">
+    <div class="col-6">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary w-100"})
+    </div>
+    <div class="col-6">
+        <a class="btn btn-secondary w-100" asp-action="Index">Voltar à Lista</a>
+    </div>
+</div>
