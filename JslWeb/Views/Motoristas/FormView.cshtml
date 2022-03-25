@@ -1,16 +1,16 @@
 ﻿@model JslWeb.Models.Motorista
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = ViewBag.Titulo;
 }
 
-<h1>Alteração:</h1>
+<h1>@ViewBag.Titulo</h1>
 
-<h4>Motorista @Model.Id</h4>
+<h4>@ViewBag.Header</h4>
 <hr />
 <div class="row">
     <div class="col-12">
-        <form asp-action="Edit">
+        <form asp-action="FormView">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <Input type="hidden" asp-for="Id" />
             <div class="row">

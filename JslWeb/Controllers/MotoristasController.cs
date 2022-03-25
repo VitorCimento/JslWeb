@@ -17,6 +17,22 @@ namespace JslWeb.Controllers
             return View(motoristaList);
         }
 
+        public async Task<ActionResult> FormView(long id = 0)
+        {
+            if (id == 0)
+            {
+                ViewBag.Header = "";
+                ViewBag.Titulo = "Motorista - Novo";
+                return View(new Motorista());
+            }
+            else
+            {
+                ViewBag.Header = $"Código: {id.ToString()}";
+                ViewBag.Titulo = "Motorista - Alteração";
+                return await Edit(id);
+            }
+        }
+
         public async Task<ActionResult> Edit(long? id)
         {
             if (id == null) return NotFound();
@@ -37,8 +53,40 @@ namespace JslWeb.Controllers
             return View(motorista);
         }
 
-        [HttpPost,
-            ValidateAntiForgeryToken]
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<ActionResult> FormView(long id,
+            [Bind("Id, Nome, Sobrenome, CaminhaoMarca, CaminhaoModelo, CaminhaoPlaca, CaminhaoEixos, EndLogradouro, EndNumero, EndBairro, EndCidade, EndCep, EndUf, Viagens")] Motorista motorista)
+        {
+            if (id == 0)
+                return await Create(motorista);
+            else
+                return await Edit(id, motorista);
+        }
+
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<ActionResult> Create([Bind("Nome, Sobrenome, CaminhaoMarca, CaminhaoModelo, CaminhaoPlaca, CaminhaoEixos, EndLogradouro, EndNumero, EndBairro, EndCidade, EndCep, EndUf, Viagens")] Motorista motorista)
+        {
+            if (ModelState.IsValid)
+            {
+                using (var client = new HttpClient())
+                {
+                    StringContent content = new StringContent(JsonConvert.SerializeObject(motorista), Encoding.UTF8, "application/json");
+                    client.BaseAddress = new Uri(API);
+                    HttpResponseMessage responseMessage = await client.PostAsync("motoristas/", content);
+
+                    if (!responseMessage.IsSuccessStatusCode)
+                    {
+                        return Problem(statusCode: (int)responseMessage.StatusCode);
+                    }
+
+                    return RedirectToAction(nameof(Index));
+                }
+            }
+            return View(motorista);
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(long id, 
             [Bind("Id, Nome, Sobrenome, CaminhaoMarca, CaminhaoModelo, CaminhaoPlaca, CaminhaoEixos, EndLogradouro, EndNumero, EndBairro, EndCidade, EndCep, EndUf, Viagens")] Motorista motorista)
         {
